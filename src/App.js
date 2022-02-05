@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import "tailwindcss/tailwind.css";
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {useState} from "react";
+import Intro from "./components/Intro";
+import Board from "./components/Board";
+
+const App = () => {
+
+    const [showIntro, setShowIntro] = useState(true);
+    const [showBoard, setShowBoard] = useState(false);
+
+    const playBtnHandleClick = (e) => {
+        setShowBoard(true)
+        setShowIntro(false)
+    }
+
+    const backBtnHandleClick = (e) => {
+        setShowBoard(false)
+        setShowIntro(true)
+    }
+
+    return (
+        <div className="container mx-auto h-screen">
+            {
+                showIntro &&
+                <Intro playBtnHandleClick={playBtnHandleClick}/>
+            }
+
+            { showBoard &&
+                <Board backBtnHandleClick={backBtnHandleClick}/>
+            }
+        </div>
+    );
 }
 
 export default App;
