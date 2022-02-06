@@ -30,11 +30,13 @@ const Board = (props) => {
     });
 
     const [points, setPoints] = useState(0)
+    const [lock, setLock] = useState(false)
 
     const handleKeyDown = (e) => {
         if (e.code === 'Enter') {
             let characterSound = new Audio(getSoundByCharacter(character))
-            characterSound.play().then(r => {})
+            characterSound.play().then(r => {
+            })
         } else if (e.code === 'Escape') {
             props.backBtnHandleClick()
         } else if (e.code === 'Space') {
@@ -42,18 +44,23 @@ const Board = (props) => {
             let characterSound = new Audio(getSoundByCharacter(c))
             characterSound.play().then(r => {
                 setCharacter(c)
+                setLock(false)
             })
         } else if (Object.values(characters).includes(e.code)) {
             if (e.code === characters[character]) {
                 let audio = randomSound(audioCorrect)
                 audio.play().then(r => {
-                    setPoints((prevPoints) => {
-                        return prevPoints + 1
-                    })
+                    if (!lock) {
+                        setPoints((prevPoints) => {
+                            return prevPoints + 1
+                        })
+                    }
+                    setLock(true)
                 })
             } else {
                 let audio = randomSound(audioIncorrect)
-                audio.play().then(r => {})
+                audio.play().then(r => {
+                })
             }
         }
     }
