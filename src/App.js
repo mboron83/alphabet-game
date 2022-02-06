@@ -6,18 +6,17 @@ import Intro from "./components/Intro";
 import Board from "./components/Board";
 
 const App = () => {
-
     const [showIntro, setShowIntro] = useState(true);
     const [showBoard, setShowBoard] = useState(false);
 
     const playBtnHandleClick = (e) => {
-        setShowBoard(true)
-        setShowIntro(false)
+        setShowBoard(!showBoard)
+        setShowIntro(!showIntro)
     }
 
     const backBtnHandleClick = (e) => {
-        setShowBoard(false)
-        setShowIntro(true)
+        setShowBoard(!showBoard)
+        setShowIntro(!showIntro)
     }
 
     return (
@@ -27,7 +26,8 @@ const App = () => {
                 <Intro playBtnHandleClick={playBtnHandleClick}/>
             }
 
-            { showBoard &&
+            {
+                showBoard &&
                 <Board backBtnHandleClick={backBtnHandleClick}/>
             }
         </div>

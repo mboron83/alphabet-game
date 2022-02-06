@@ -15,3 +15,8 @@
     align-items: center;
 }
 
+.points {
+    position: fixed;
+    top: 10px;
+}
+
