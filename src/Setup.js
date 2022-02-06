@@ -217,7 +217,19 @@ const soundLibrary = [
     'sounds/Z/snd_voices_item_Zorro.mp3',
     'sounds/Z/snd_voices_item_Zwieciadlo.mp3',
 ];
-const audioCorrect = new Audio('sounds/correct.mp3');
-const audioIncorrect = new Audio('sounds/incorrect.mp3');
+const audioCorrect = [
+    new Audio('sounds/correct_1.mp3'),
+    new Audio('sounds/correct_2.mp3'),
+    new Audio('sounds/correct_3.mp3'),
+    new Audio('sounds/correct_4.mp3'),
+    new Audio('sounds/correct_5.mp3'),
+];
+const audioIncorrect = [
+    new Audio('sounds/incorrect_1.mp3'),
+    new Audio('sounds/incorrect_2.mp3'),
+    new Audio('sounds/incorrect_3.mp3'),
+    new Audio('sounds/incorrect_4.mp3'),
+    new Audio('sounds/incorrect_5.mp3')
+];
 
 export {characters, soundLibrary, audioCorrect, audioIncorrect}

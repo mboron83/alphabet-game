@@ -8,6 +8,11 @@ const Board = (props) => {
         return Object.keys(characters)[randomIdx]
     }
 
+    const randomSound = (sndTab) => {
+        let randomIdx = Math.floor(Math.random() * sndTab.length)
+        return sndTab[randomIdx]
+    }
+
     const getSoundByCharacter = (character) => {
         let soundsByCharacter = []
         for (const item of soundLibrary) {
@@ -40,16 +45,15 @@ const Board = (props) => {
             })
         } else if (Object.values(characters).includes(e.code)) {
             if (e.code === characters[character]) {
-                audioCorrect.play().then(r => {
+                let audio = randomSound(audioCorrect)
+                audio.play().then(r => {
                     setPoints((prevPoints) => {
                         return prevPoints + 1
                     })
-                    // increasePoint('good_answer');
-                });
+                })
             } else {
-                audioIncorrect.play().then(r => {
-                    // increasePoint('bad_answer');
-                });
+                let audio = randomSound(audioIncorrect)
+                audio.play().then(r => {})
             }
         }
     }
@@ -65,7 +69,7 @@ const Board = (props) => {
     return (
         <main className="flex flex-col h-full justify-center items-center board">
             <div className="points">
-                Liczba punktów: {points}
+                Points: {points}
             </div>
             <Card character={character}/>
             <div className="flex-row">

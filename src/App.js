@@ -20,7 +20,7 @@ const App = () => {
     }
 
     return (
-        <div className="container mx-auto h-screen">
+        <div className="container mx-auto h-screen app">
             {
                 showIntro &&
                 <Intro playBtnHandleClick={playBtnHandleClick}/>

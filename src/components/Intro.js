@@ -1,10 +1,10 @@
-import logo from '../logo.svg';
+import logo from '../logo.png';
 
 const Intro = (props) => {
 
     return (
         <main className={`flex flex-col h-full justify-center items-center`}>
-            <div className="max-w-xl mx-auto flex p-6 bg-white rounded-lg shadow-xl mb-10">
+            <div className="max-w-xl mx-auto flex p-6 bg-white rounded-lg shadow-xl mb-10 intro">
                 <div className="flex-shrink-0">
                     <img className="h-12 w-12" src={logo} alt="Alphabet Game Logo" />
                 </div>
