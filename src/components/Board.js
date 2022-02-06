@@ -33,14 +33,14 @@ const Board = (props) => {
 
     const handleKeyDown = (e) => {
         if (e.code === 'Enter') {
-            console.log('Enter')
+            let characterSound = new Audio(getSoundByCharacter(character))
+            characterSound.play().then(r => {})
         } else if (e.code === 'Escape') {
-
+            props.backBtnHandleClick()
         } else if (e.code === 'Space') {
             let c = shuffleCharacters()
-            let snd = getSoundByCharacter(c)
-            let letterAudio = new Audio(snd)
-            letterAudio.play().then(r => {
+            let characterSound = new Audio(getSoundByCharacter(c))
+            characterSound.play().then(r => {
                 setCharacter(c)
             })
         } else if (Object.values(characters).includes(e.code)) {
