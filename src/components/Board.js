@@ -1,6 +1,10 @@
 import {audioCorrect, audioIncorrect, characters, soundLibrary} from "../Setup"
 import {useEffect, useState} from "react"
 import Card from "./Card"
+import nextIcon from '../random.svg';
+import exitIcon from '../close-round-line.svg';
+import replayIcon from '../replay-video.svg';
+
 
 const Board = (props) => {
     const shuffleCharacters = () => {
@@ -66,10 +70,10 @@ const Board = (props) => {
     }
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown)
+        window.addEventListener('keypress', handleKeyDown)
 
         return () => {
-            window.removeEventListener('keydown', handleKeyDown)
+            window.removeEventListener('keypress', handleKeyDown)
         }
     });
 
@@ -82,9 +86,36 @@ const Board = (props) => {
             <div className="flex-row">
                 <button
                     onClick={props.backBtnHandleClick}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
                 >
-                    Back
+                    <img src={exitIcon} className="w-6 h-6 mr-2" alt="" />
+                    <span>Exit</span>
+                </button>
+
+                <button
+                    onClick={() => {
+                        let characterSound = new Audio(getSoundByCharacter(character))
+                        characterSound.play().then(r => {})
+                    }}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-cente ml-4 mr-4 w-32"
+                >
+                    <img src={replayIcon} className="w-6 h-6 mr-2" alt="" />
+                    <span>Replay</span>
+                </button>
+
+                <button
+                    onClick={() => {
+                        let c = shuffleCharacters()
+                        let characterSound = new Audio(getSoundByCharacter(c))
+                        characterSound.play().then(r => {
+                            setCharacter(c)
+                            setLock(false)
+                        })
+                    }}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded inline-flex items-center w-32"
+                >
+                    <img src={nextIcon} className="w-6 h-6 mr-2" alt="" />
+                    <span>Shuffle</span>
                 </button>
             </div>
         </main>
